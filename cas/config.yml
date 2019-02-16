@@ -1,0 +1,37 @@
+server: webrick
+port: 3012
+
+database:
+  adapter: mysql2
+  database: casserver
+  username: root
+  password: password
+  host: db
+  port: 3306
+  reconnect: true
+
+authenticator:
+  class: CASServer::Authenticators::SQL
+  database:
+    adapter: mysql2
+    database: casserver
+    username: root
+    password: password
+    host: db
+    port: 3306
+  user_table: users
+  username_column: username
+  password_column: password
+
+theme: simple
+
+# The name of your company/organization. This will show up on the login page.
+organization: CAS
+
+# A short bit of text that shows up on the login page. You can make this blank
+# if you prefer to have no extra text shown at the bottom of the login box.
+infoline: Powered by <a href="http://rubycas.github.com">RubyCAS-Server</a>
+
+log:
+  file: casserver.log
+  level: INFO
